@@ -76,3 +76,5 @@ static/
 !templates/static/
 db/
 media/images/profile_image/
+*/migrations/*
+db.sqlite3
