@@ -50,7 +50,6 @@ class RegisteredUserViewSet(generics.ListCreateAPIView):
 def user_list(request):
     if request.method == 'GET':
         user_list = Registeration.objects.all()
-        print user_list
         serializer = RegisterationSerializer(user_list, many=True)
         return JSONResponse(serializer.data)
 
