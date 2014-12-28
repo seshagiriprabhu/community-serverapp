@@ -29,6 +29,9 @@ class Geofence(models.Model):
     email = models.ForeignKey(Registeration)
     created_date_time = models.DateTimeField(auto_now_add=True,
             blank=True)
+    
+    def create(self, validated_data):
+        return Geofence.objects.create(**validated_data)
 
     def save(self, *args, **kwargs):
         super(Geofence, self).save(*args, **kwargs)
@@ -49,6 +52,9 @@ class UserLocationData(models.Model):
     date_time = models.DateTimeField(auto_now_add=True, blank=True)
     transition_type = models.IntegerField(blank=False)
     gid = models.ForeignKey(Geofence)
+    
+    def create(self, validated_data):
+        return UserLocationData.objects.create(**validated_data)
 
     def save(self, *args, **kwargs):
         super(UserLocationData, self).save(*args, **kwargs)
@@ -80,6 +86,9 @@ class UserPhoneData(models.Model):
             max_length=1, blank=False, choices=CONNECTION_METHOD)
     app_data_transfered = models.DecimalField(
             blank=False, max_digits=10, decimal_places=2)
+
+    def create(self, validated_data):
+        return UserPhoneData.objects.create(**validated_data)
 
     def save(self, *args, **kwargs):
         super(Model, self).save(*args, **kwargs)

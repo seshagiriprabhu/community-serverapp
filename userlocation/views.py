@@ -8,6 +8,7 @@ from rest_framework import generics, filters, status, viewsets
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework.views import APIView
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 
@@ -47,21 +48,26 @@ class UserLocationViewSet(generics.ListCreateAPIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class UserLocationDetails(generics.RetrieveAPIView):
-    serializer_class = UserLocationSerializer
-    queryset = UserLocationData.objects.all()
-    serializer = UserPhoneDataSerializer(queryset, many=True)
-    def get_serializer_class(self):
+class UserLocationDetails(APIView):
+    serializer_class = UserLocationDetailsSerializer
+    def get_object(self, uid):
+        try:
+            return UserLocationData.objects.get(uid=uid)
+        except UserLocationData.DoesNotExist:
+            raise Http404
+
+    def get(self, request, uid, format=None):
+        queryset = self.get_object(uid)
+        serializer = UserLocationDetailsSerializer(queryset)
         return Response(serializer.data)
 
-@csrf_exempt
-@api_view(['GET'])
-def user_location_details_list(request):
+
+class ListUserLocationDetails(generics.RetrieveAPIView):
     permission_classes = (IsAdminUser,)
     def get(self, request, *args, **kwargs):
         queryset = UserLocationData.objects.all()
         serializer = UserLocationDetailsSerializer(queryset, many=True)
-        return JSONResponse(serializer.data)
+        return Response(serializer.data)
 
 
 class GeofenceViewSet(generics.ListCreateAPIView):
@@ -87,9 +93,15 @@ class GeofenceViewSet(generics.ListCreateAPIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class GeofenceDetails(generics.RetrieveAPIView):
+class GeofenceDetails(APIView):
     serializer_class = GeofenceDetailsSerializer
-    queryset = Geofence.objects.all()
-    serializer = GeofenceDetailsSerializer(queryset, many=True)
-    def get_serializer_class(self):
+    def get_object(self, gid):
+        try:
+            return Geofence.objects.get(gid=gid)
+        except Geofence.DoesNotExist:
+            raise Http404
+
+    def get(self, request, gid, format=None):
+        queryset = self.get_object(gid)
+        serializer = GeofenceDetailsSerializer(queryset)
         return Response(serializer.data)
