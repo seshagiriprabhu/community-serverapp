@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'registeration',
     'userlocation',
+    'userphonedata',
 #    'event',
 )
 
