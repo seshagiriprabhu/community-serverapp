@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from django.forms import widgets
-from userlocation.models import Geofence, UserLocationData, UserPhoneData
-from userlocation.models import BATTERY_STATE, CONNECTION_METHOD
+from userlocation.models import Geofence, UserLocationData
 
 class GeofenceSerializer(serializers.ModelSerializer):
     class Meta:
@@ -12,6 +11,18 @@ class GeofenceSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return Geofence.objects.create(**validated_data)
+
+
+class GeofenceGIDSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Geofence
+        fields = ('gid', 'fence_name')
+
+
+class GeofenceListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Geofence
+        fields = ('url', 'gid', 'fence_name')
 
 
 class GeofenceDetailsSerializer(serializers.ModelSerializer):
@@ -31,21 +42,14 @@ class UserLocationSerializer(serializers.ModelSerializer):
         return UserLocationData.objects.create(**validated_data)
 
 
+class UserLocationListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserLocationData
+        fields = ('uid', 'date_time', 'email')
+
+
 class UserLocationDetailsSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserLocationData
         fields = ('uid', 'email', 'date_time', 'accuracy',\
                 'transition_type', 'gid')
-
-    
-class UserPhoneDataSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = UserPhoneData
-        fields = ('email', 'date_time', 'battery_state',\
-                'app_power_consumption', 'avg_mem_util',\
-                'avg_cpu_util', 'last_online_time',\
-                'last_online_duration', 'connection_method',\
-                'app_data_transfered')
-
-    def create(self, validated_data):
-        return UserPhoneData.objects.create(**validated_data)

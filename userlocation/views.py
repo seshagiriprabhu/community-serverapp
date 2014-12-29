@@ -6,6 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from rest_framework import generics, filters, status, viewsets
 from rest_framework.permissions import IsAdminUser
+from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
@@ -13,12 +14,13 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 
 from userlocation.models import Geofence, UserLocationData
-from userlocation.models import UserPhoneData
 from userlocation.serializers import GeofenceSerializer
+from userlocation.serializers import GeofenceListSerializer
 from userlocation.serializers import GeofenceDetailsSerializer
+from userlocation.serializers import GeofenceGIDSerializer
 from userlocation.serializers import UserLocationSerializer
+from userlocation.serializers import UserLocationListSerializer
 from userlocation.serializers import UserLocationDetailsSerializer
-from userlocation.serializers import UserPhoneDataSerializer
 
 from registeration.views import JSONResponse
 
@@ -66,9 +68,9 @@ class ListUserLocationDetails(generics.RetrieveAPIView):
     permission_classes = (IsAdminUser,)
     def get(self, request, *args, **kwargs):
         queryset = UserLocationData.objects.all()
-        serializer = UserLocationDetailsSerializer(queryset, many=True)
+        serializer = UserLocationListSerializer(queryset, many=True)
         return Response(serializer.data)
-
+        
 
 class GeofenceViewSet(generics.ListCreateAPIView):
     """
@@ -78,7 +80,7 @@ class GeofenceViewSet(generics.ListCreateAPIView):
     serializer_class = GeofenceSerializer
     def get(self, request, *args, **kwargs):
         queryset = Geofence.objects.all()
-        serializer = GeofenceSerializer(queryset, many=True)
+        serializer = GeofenceGIDSerializer(queryset, many=True)
         return Response(serializer.data)
     
     def post(self, request, *args, **kwargs):
@@ -91,6 +93,7 @@ class GeofenceViewSet(generics.ListCreateAPIView):
             else: 
                 return Response('Error: Expiration time should be valid value')
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class GeofenceDetails(APIView):
