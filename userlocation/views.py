@@ -28,7 +28,6 @@ class UserLocationViewSet(generics.ListCreateAPIView):
     to be added or viewed
     """
     serializer_class = UserLocationSerializer
-    permission_classes = (IsAdminUser,)
     
     def get(self, request, *args, **kwargs):
         queryset = UserLocationData.objects.all()
