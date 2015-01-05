@@ -40,7 +40,7 @@ INSTALLED_APPS = (
     'registeration',
     'userlocation',
     'userphonedata',
-#    'event',
+    'event',
 )
 
 MIDDLEWARE_CLASSES = (
