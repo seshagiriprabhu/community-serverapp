@@ -13,6 +13,12 @@ class RegisterationSerializer(serializers.ModelSerializer):
         return Registeration.objects.create(**validated_data)
 
 
+class UserListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Registeration
+        fields = ('display_name', 'email')
+
+
 class FriendListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Registeration

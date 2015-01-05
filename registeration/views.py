@@ -15,6 +15,7 @@ from registeration.models import Registeration
 from registeration.serializers import RegisterationSerializer
 from registeration.serializers import FriendListSerializer
 from registeration.serializers import FriendDetailsSerializer
+from registeration.serializers import UserListSerializer
 
 from event.models import Event, EventAttendance
 from event.serializers import EventDetailsSerializer
@@ -25,11 +26,10 @@ class RegisteredUserViewSet(generics.ListCreateAPIView):
     """
     (Graphical) API endpoint that allows users to be viewed or added.
     """
-    queryset = Registeration.objects.all()
-    
+    serializer_class = RegisterationSerializer 
     def get(self, request, *args, **kwargs):
         queryset = Registeration.objects.all()
-        serializer = RegisterationSerializer(queryset, many=True)
+        serializer = UserListSerializer(queryset, many=True)
         return Response(serializer.data)
 
     def post(self, request, *args, **kwargs):
