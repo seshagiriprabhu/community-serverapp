@@ -21,7 +21,6 @@ from event.serializers import EventAttendanceSerializer
 from event.serializers import EventAttendanceListSerializer
 from event.serializers import EventAttendanceDetailsSerializer
 
-from registeration.views import JSONResponse
 
 class EventViewSet(generics.ListCreateAPIView):
     serializer_class = EventSerializer

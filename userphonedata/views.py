@@ -19,7 +19,6 @@ from userphonedata.serializers import UserPhoneDataSerializer
 from userphonedata.serializers import UserPhoneDataListSerializer
 from userphonedata.serializers import UserPhoneDataDetailsSerializer
 
-from registeration.views import JSONResponse
 
 class UserPhoneDataViewSet(generics.ListCreateAPIView):
     """

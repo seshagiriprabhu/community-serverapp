@@ -8,7 +8,6 @@ from rest_framework import generics, filters, status, viewsets
 from rest_framework.permissions import IsAdminUser
 from rest_framework import permissions
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
@@ -22,7 +21,6 @@ from userlocation.serializers import UserLocationSerializer
 from userlocation.serializers import UserLocationListSerializer
 from userlocation.serializers import UserLocationDetailsSerializer
 
-from registeration.views import JSONResponse
 
 class UserLocationViewSet(generics.ListCreateAPIView):
     """
@@ -60,7 +58,7 @@ class UserLocationDetails(APIView):
 
     def get(self, request, uid, format=None):
         queryset = self.get_object(uid)
-        serializer = UserLocationDetailsSerializer(queryset)
+        serializer = UserLocationDetailsSerializer(queryset, many=False)
         return Response(serializer.data)
 
 
