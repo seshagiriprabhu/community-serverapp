@@ -1,8 +1,8 @@
 from rest_framework import serializers
 from django.forms import widgets
-from registeration.models import Registeration, GENDER_CHOICES
+from registeration.models import Registeration
 
-class RegisterationSerializer(serializers.HyperlinkedModelSerializer):
+class RegisterationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Registeration
         fields = ('display_name', 'email', 'gender', 'date_of_birth',\
@@ -13,13 +13,13 @@ class RegisterationSerializer(serializers.HyperlinkedModelSerializer):
         return Registeration.objects.create(**validated_data)
 
 
-class FriendListSerializer(serializers.HyperlinkedModelSerializer):
+class FriendListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Registeration
         fields = ('display_name', 'email')
 
 
-class FriendDetailSerializer(serializers.HyperlinkedModelSerializer):
+class FriendDetailsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Registeration
         fields = ('display_name', 'email', 'gender', 'date_of_birth',\
