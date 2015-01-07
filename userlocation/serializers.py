@@ -6,8 +6,7 @@ class GeofenceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Geofence
         fields = ('fence_name', 'latitude', 'longitude',\
-                'geofence_radius', 'expiration_time',\
-                'email')
+                'geofence_radius', 'email')
 
     def create(self, validated_data):
         return Geofence.objects.create(**validated_data)
@@ -22,7 +21,7 @@ class GeofenceGIDSerializer(serializers.ModelSerializer):
 class GeofenceListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Geofence
-        fields = ('url', 'gid', 'fence_name')
+        fields = ('gid', 'fence_name')
 
 
 class GeofenceDetailsSerializer(serializers.ModelSerializer):
@@ -45,11 +44,11 @@ class UserLocationSerializer(serializers.ModelSerializer):
 class UserLocationListSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserLocationData
-        fields = ('uid', 'date_time', 'email')
+        fields = ('date_time', 'email')
 
 
 class UserLocationDetailsSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserLocationData
-        fields = ('uid', 'email', 'date_time', 'accuracy',\
+        fields = ('email', 'date_time', 'accuracy',\
                 'transition_type', 'gid')

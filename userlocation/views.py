@@ -27,11 +27,10 @@ class UserLocationViewSet(generics.ListCreateAPIView):
     (Graphical) API endpoint that allows user location data 
     to be added or viewed
     """
-    serializer_class = UserLocationSerializer
-    
+    serializer_class = UserLocationSerializer    
     def get(self, request, *args, **kwargs):
-        queryset = UserLocationData.objects.all()
-        serializer = UserLocationSerializer(queryset, many=True)
+        queryset = UserLocationData.objects.all().reverse()[:5]
+        serializer = UserLocationListSerializer(queryset, many=True)
         return Response(serializer.data)
 
     def post(self, request, *args, **kwargs):
@@ -43,28 +42,31 @@ class UserLocationViewSet(generics.ListCreateAPIView):
                     accuracy >= 0.00 and accuracy <= 100.00:
                 print "Saving"
                 serializer.save()
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                return Response(serializer.data,\
+                        status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,\
+                status=status.HTTP_400_BAD_REQUEST)
 
 
-class UserLocationDetails(APIView):
+class UserLocationDetailsViewSet(APIView):
     serializer_class = UserLocationDetailsSerializer
-    def get_object(self, uid):
+    def get_object(self, email):
         try:
-            return UserLocationData.objects.get(uid=uid)
+            return UserLocationData.objects.filter(email=email).reverse()
         except UserLocationData.DoesNotExist:
             raise Http404
 
-    def get(self, request, uid, format=None):
-        queryset = self.get_object(uid)
-        serializer = UserLocationDetailsSerializer(queryset, many=False)
+    def get(self, request, email, format=None):
+        queryset = self.get_object(email)
+        serializer = UserLocationDetailsSerializer(queryset, many=True)
         return Response(serializer.data)
 
 
-class ListUserLocationDetails(generics.RetrieveAPIView):
+class UserLocationListViewSet(APIView):
     permission_classes = (IsAdminUser,)
+    serializer_class = UserLocationListSerializer
     def get(self, request, *args, **kwargs):
-        queryset = UserLocationData.objects.all()
+        queryset = UserLocationData.objects.all().reverse()[:10]
         serializer = UserLocationListSerializer(queryset, many=True)
         return Response(serializer.data)
         
@@ -76,24 +78,43 @@ class GeofenceViewSet(generics.ListCreateAPIView):
     """
     serializer_class = GeofenceSerializer
     def get(self, request, *args, **kwargs):
-        queryset = Geofence.objects.all()
+        queryset = Geofence.objects.all().reverse()[:5]
         serializer = GeofenceGIDSerializer(queryset, many=True)
         return Response(serializer.data)
     
     def post(self, request, *args, **kwargs):
         serializer = GeofenceSerializer(data=request.data)
         if serializer.is_valid():
-            expiration_time = int(request.data['expiration_time'])
-            if expiration_time > 0:
-                serializer.save()
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
-            else: 
-                return Response('Error: Expiration time should be valid value')
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            serializer.save()
+            return Response(serializer.data,\
+                    status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,\
+                status=status.HTTP_400_BAD_REQUEST)
 
 
-class GeofenceDetails(APIView):
+class GeofenceListViewSet(APIView):
+    serializer_class = GeofenceListSerializer
+    def get(self, request, *args, **kwargs):
+        queryset = Geofence.objects.all().reverse()
+        serializer = GeofenceListSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+
+class GeofenceNameSearchDetailsViewset(APIView):
+    serializer_class = GeofenceSerializer
+    def get_object(self, fence_name):
+        try:
+            return Geofence.objects.all().filter(fence_name=fence_name)
+        except Geofence.DoesNotExist:
+            raise Http404
+
+    def get(self, request, fence_name, format=None):
+        queryset = self.get_object(fence_name)
+        serializer = GeofenceDetailsSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+
+class GeofenceDetailsViewSet(APIView):
     serializer_class = GeofenceDetailsSerializer
     def get_object(self, gid):
         try:
