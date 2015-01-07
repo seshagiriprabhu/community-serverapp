@@ -1,6 +1,6 @@
 from django.db import models
 from registeration.models import Registeration
-from userlocation.models import Geofence
+from geofence.models import Geofence
 
 GOING_STATUS = (
                 ('Going', 'Going'),

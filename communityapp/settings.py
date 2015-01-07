@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'userlocation',
     'userphonedata',
     'event',
+    'geofence',
 )
 
 MIDDLEWARE_CLASSES = (

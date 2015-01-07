@@ -1,35 +1,6 @@
 from rest_framework import serializers
 from django.forms import widgets
-from userlocation.models import Geofence, UserLocationData
-
-class GeofenceSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Geofence
-        fields = ('fence_name', 'latitude', 'longitude',\
-                'geofence_radius', 'email')
-
-    def create(self, validated_data):
-        return Geofence.objects.create(**validated_data)
-
-
-class GeofenceGIDSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Geofence
-        fields = ('gid', 'fence_name')
-
-
-class GeofenceListSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Geofence
-        fields = ('gid', 'fence_name')
-
-
-class GeofenceDetailsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Geofence
-        fields = ('gid', 'fence_name', 'latitude', 'longitude',\
-                'geofence_radius', 'expiration_time', 'email',\
-                'created_date_time')
+from userlocation.models import UserLocationData
 
 
 class UserLocationSerializer(serializers.ModelSerializer):
