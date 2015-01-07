@@ -1,7 +1,6 @@
 from django.conf.urls import url, patterns
 from rest_framework.urlpatterns import format_suffix_patterns
-from geofence import urls
-
+from geofence import views
 
 urlpatterns = [
     url(r'^$',

@@ -12,6 +12,7 @@ from rest_framework.views import APIView
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 
+from geofence.models import Geofence
 from geofence.serializers import GeofenceSerializer
 from geofence.serializers import GeofenceListSerializer
 from geofence.serializers import GeofenceDetailsSerializer
