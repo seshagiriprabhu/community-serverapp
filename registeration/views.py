@@ -28,7 +28,7 @@ class RegisteredUserViewSet(generics.ListCreateAPIView):
     """
     serializer_class = RegisterationSerializer 
     def get(self, request, *args, **kwargs):
-        queryset = Registeration.objects.all()
+        queryset = Registeration.objects.all().reverse()[:5]
         serializer = UserListSerializer(queryset, many=True)
         return Response(serializer.data)
 
