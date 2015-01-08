@@ -1,4 +1,6 @@
 from rest_framework import generics
+from datetime import datetime
+
 from event.models import Event, EventAttendance
 from event.serializers import EventSerializer
 from event.serializers import EventListSerializer
@@ -9,7 +11,7 @@ from event.serializers import EventAttendanceDetailsSerializer
 
 
 class EventViewSet(generics.ListCreateAPIView):
-    queryset = Event.objects.all()
+    queryset = Event.objects.all().reverse()[:5]
     serializer_class = EventSerializer
 
 
@@ -19,9 +21,14 @@ class EventNameListViewSet(generics.ListAPIView):
     lookup_field =('event_name')
 
 
-class EventListAllViewSet(generics.RetrieveAPIView):
-    queryset = Event.objects.all()
+class EventListAllOpenViewSet(generics.ListAPIView):
     serializer_class = EventListSerializer
+    queryset = Event.objects.all().filter(end_time__gte=datetime.now())
+
+
+class EventListAllClosedViewSet(generics.ListAPIView):
+    serializer_class = EventListSerializer
+    queryset = Event.objects.all().filter(end_time__lte=datetime.now())
 
 
 class EventDetailsViewSet(generics.RetrieveUpdateAPIView):

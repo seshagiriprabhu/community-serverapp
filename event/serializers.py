@@ -16,7 +16,8 @@ class EventSerializer(serializers.ModelSerializer):
 class EventListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
-        fields = ('event_id', 'event_name', 'start_time')
+        fields = ('event_id', 'event_name', 'start_time',\
+                'end_time')
 
 
 class EventDetailsSerializer(serializers.ModelSerializer):
