@@ -11,7 +11,6 @@ GOING_STATUS = (
 class Event(models.Model):
     event_id = models.AutoField(primary_key=True)
     event_name = models.CharField(max_length=128,\
-            unique=True,
             blank=False)
     event_description = models.CharField(max_length=2048, blank=True)
     event_creator = models.ForeignKey(Registeration,\

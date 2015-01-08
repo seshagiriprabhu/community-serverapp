@@ -39,7 +39,7 @@ class EventAttendanceSerializer(serializers.ModelSerializer):
 class EventAttendanceListSerializer(serializers.ModelSerializer): 
     class Meta:
         model = EventAttendance
-        fields = ('event_id', 'email')
+        fields = ('email', 'status', 'decision_time')
 
 
 class EventAttendanceDetailsSerializer(serializers.ModelSerializer):

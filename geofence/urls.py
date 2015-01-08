@@ -9,10 +9,10 @@ urlpatterns = [
     url(r'^list/$',
         views.GeofenceListViewSet.as_view(),
         name='geofence-list'),
-    url(r'^gid/(?P<gid>[0-9]+)/$',
+    url(r'^gid/(?P<pk>[0-9]+)/$',
         views.GeofenceDetailsViewSet.as_view(),
         name='geofence-gid-search'),
-    url(r'^name/(?P<fence_name>[\w.%+-]+)/$',
+    url(r'^name/(?P<pk>[\w.%+-]+)/$',
         views.GeofenceNameSearchDetailsViewset.as_view(),
         name='geofence-name-search'),
 ]

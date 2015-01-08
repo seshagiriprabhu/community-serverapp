@@ -9,7 +9,7 @@ urlpatterns = [
     url(r'^list/$',
         views.UserPhoneDataList.as_view(),
         name='user-phone-data-list'),
-    url(r'^list/(?P<uid>[0-9]+)/$',
+    url(r'^(?P<pk>[0-9]+)/$',
         views.UserPhoneDataDetails.as_view(),
         name='user-phone-data-details'),
 ]

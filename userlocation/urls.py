@@ -9,7 +9,7 @@ urlpatterns = [
     url(r'^list/$', 
         views.UserLocationListViewSet.as_view(),
         name='user-location-list'),
-    url(r'^list/(?P<email>[\w.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4})$', 
+    url(r'^(?P<pk>[0-9]+)/$', 
         views.UserLocationDetailsViewSet.as_view(),
         name='user-location-detail'),
 ]
