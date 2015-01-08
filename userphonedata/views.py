@@ -8,16 +8,24 @@ from userphonedata.serializers import UserPhoneDataDetailsSerializer
 
 
 class UserPhoneDataViewSet(generics.ListCreateAPIView):
-    queryset = UserPhoneData.objects.all()
+    queryset = UserPhoneData.objects.all().reverse()[:1]
     serializer_class = UserPhoneDataSerializer
 
 
-class UserPhoneDataList(generics.ListAPIView):
+class UserPhoneDataListViewSet(generics.ListAPIView):
     permission_classes = (IsAdminUser,)
     queryset = UserPhoneData.objects.all()
     serializer_class = UserPhoneDataListSerializer
 
 
-class UserPhoneDataDetails(generics.RetrieveAPIView):
+class UserPhoneDataNameSearchListViewSet(generics.ListAPIView):
+    permission_classes = (IsAdminUser,)
+    serializer_class = UserPhoneDataDetailsSerializer
+    def get_queryset(self):
+        return UserPhoneData.objects\
+                .filter(email=self.kwargs['pk'])
+
+
+class UserPhoneDataDetailsViewSet(generics.RetrieveAPIView):
     queryset = UserPhoneData.objects.all()
     serializer_class = UserPhoneDataDetailsSerializer

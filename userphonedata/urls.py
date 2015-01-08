@@ -7,10 +7,13 @@ urlpatterns = [
         views.UserPhoneDataViewSet.as_view(),
         name='user-phone-data'),
     url(r'^list/$',
-        views.UserPhoneDataList.as_view(),
+        views.UserPhoneDataListViewSet.as_view(),
+        name='user-phone-data-list'),
+    url(r'^list/(?P<pk>[\w.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4})/$',
+        views.UserPhoneDataNameSearchListViewSet.as_view(),
         name='user-phone-data-list'),
     url(r'^(?P<pk>[0-9]+)/$',
-        views.UserPhoneDataDetails.as_view(),
+        views.UserPhoneDataDetailsViewSet.as_view(),
         name='user-phone-data-details'),
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)
