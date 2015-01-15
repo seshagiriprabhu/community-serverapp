@@ -3,6 +3,5 @@ Pygments
 South
 argparse
 djangorestframework
-django-filter
--e git+https://github.com/kevin-brown/drf-any-permissions@b6f8b8d1e118b8b4242a41ee196ee1212f81b388#egg=drf_any_permissions-master
+django-leaflet
 wsgiref
