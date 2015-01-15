@@ -14,7 +14,9 @@ class UserPhoneDataViewSet(generics.ListCreateAPIView):
 
 class UserPhoneDataListViewSet(generics.ListAPIView):
     permission_classes = (IsAdminUser,)
-    queryset = UserPhoneData.objects.all()
+    queryset = UserPhoneData.objects.all()\
+            .order_by('date_time')\
+            .reverse()[:5]
     serializer_class = UserPhoneDataListSerializer
 
 
@@ -23,7 +25,9 @@ class UserPhoneDataNameSearchListViewSet(generics.ListAPIView):
     serializer_class = UserPhoneDataDetailsSerializer
     def get_queryset(self):
         return UserPhoneData.objects\
-                .filter(email=self.kwargs['pk'])
+                .filter(email=self.kwargs['pk'])\
+                .order_by('date_time')\
+                .reverse()
 
 
 class UserPhoneDataDetailsViewSet(generics.RetrieveAPIView):

@@ -9,7 +9,9 @@ from userlocation.serializers import UserLocationDetailsSerializer
 
 
 class UserLocationViewSet(generics.ListCreateAPIView):
-    queryset = UserLocationData.objects.all().reverse()[:5]
+    queryset = UserLocationData.objects.all()\
+            .order_by('date_time')\
+            .reverse()[:5]
     serializer_class = UserLocationSerializer    
 
 
@@ -20,7 +22,9 @@ class UserLocationDetailsViewSet(generics.RetrieveAPIView):
 
 class UserLocationListViewSet(generics.ListAPIView):
     permission_classes = (IsAdminUser,)
-    queryset = UserLocationData.objects.all()
+    queryset = UserLocationData.objects.all()\
+            .order_by('date_time')\
+            .reverse()[:5]
     serializer_class = UserLocationListSerializer
 
 

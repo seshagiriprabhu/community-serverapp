@@ -7,12 +7,16 @@ from geofence.serializers import GeofenceGIDSerializer
 
 
 class GeofenceViewSet(generics.ListCreateAPIView):
-    queryset = Geofence.objects.all().reverse()[:5]
+    queryset = Geofence.objects.all()\
+            .order_by('date_time')\
+            .reverse()[:5]
     serializer_class = GeofenceSerializer
 
 
 class GeofenceListViewSet(generics.ListAPIView):
-    queryset = Geofence.objects.all().reverse()
+    queryset = Geofence.objects.all()\
+            .order_by('date_time')\
+            .reverse()
     serializer_class = GeofenceListSerializer
 
 
@@ -21,6 +25,7 @@ class GeofenceNameSearchDetailsViewset(generics.ListAPIView):
     def get_queryset(self):
         return Geofence.objects\
                 .filter(fence_name=self.kwargs['pk'])\
+                .order_by('date_time')\
                 .reverse()
 
 

@@ -13,13 +13,17 @@ from event.serializers import EventAttendanceDetailsSerializer
 
 
 class RegisteredUserViewSet(generics.ListCreateAPIView):
-    queryset = Registeration.objects.all().reverse()[:2]
+    queryset = Registeration.objects.all()\
+            .order_by('date_time')\
+            .reverse()[:2]
     serializer_class = RegisterationSerializer 
 
 
 class AllRegisteredUsersViewSet(generics.ListAPIView):
     permissions = (IsAdminUser,)
-    queryset = Registeration.objects.all()
+    queryset = Registeration.objects.all()\
+                .order_by('date_time')\
+                .reverse()
     serializer_class = RegisterationSerializer
 
 
@@ -27,8 +31,10 @@ class FriendListViewSet(generics.ListAPIView):
     serializer_class = FriendListSerializer
 
     def get_queryset(self):
-        return Registeration.objects\
-                .all().exclude(email=self.kwargs['pk'])
+        return Registeration.objects.all()\
+                .exclude(email=self.kwargs['pk'])\
+                .order_by('date_time')\
+                .reverse()
 
 
 class UserDetailsViewSet(generics.RetrieveUpdateAPIView):
@@ -41,7 +47,9 @@ class UserCreatedEventsViewSet(generics.ListAPIView):
 
     def get_queryset(self):
         return Event.objects.all().\
-                filter(event_creator=self.kwargs['pk']).reverse()
+                filter(event_creator=self.kwargs['pk'])\
+                .order_by('date_time')\
+                .reverse()
 
 
 class UserAttendedEventsViewSet(generics.ListAPIView):
@@ -49,4 +57,6 @@ class UserAttendedEventsViewSet(generics.ListAPIView):
 
     def get_queryset(self):
         return EventAttendance.objects.all().\
-                filter(email=self.kwargs['pk']).reverse()
+                filter(email=self.kwargs['pk'])\
+                .order_by('date_time')\
+                .reverse()

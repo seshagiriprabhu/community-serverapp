@@ -11,24 +11,32 @@ from event.serializers import EventAttendanceDetailsSerializer
 
 
 class EventViewSet(generics.ListCreateAPIView):
-    queryset = Event.objects.all().reverse()[:5]
+    queryset = Event.objects.all()\
+            .order_by('date_time')\
+            .reverse()[:5]
     serializer_class = EventSerializer
 
 
 class EventNameListViewSet(generics.ListAPIView):
-    queryset = Event.objects.all()
+    queryset = Event.objects.all()\
+            .order_by('date_time')\
+            .reverse()
     serializer_class = EventDetailsSerializer
     lookup_field =('event_name')
 
 
 class EventListAllOpenViewSet(generics.ListAPIView):
     serializer_class = EventListSerializer
-    queryset = Event.objects.all().filter(end_time__gte=datetime.now())
+    queryset = Event.objects.all().filter(end_time__gte=datetime.now())\
+            .order_by('date_time')\
+            .reverse()
 
 
 class EventListAllClosedViewSet(generics.ListAPIView):
     serializer_class = EventListSerializer
-    queryset = Event.objects.all().filter(end_time__lte=datetime.now())
+    queryset = Event.objects.all().filter(end_time__lte=datetime.now())\
+            .order_by('date_time')\
+            .reverse()
 
 
 class EventDetailsViewSet(generics.RetrieveUpdateAPIView):
@@ -37,12 +45,16 @@ class EventDetailsViewSet(generics.RetrieveUpdateAPIView):
 
 
 class EventAttendanceViewSet(generics.ListCreateAPIView):
-    queryset = EventAttendance.objects.all()
+    queryset = EventAttendance.objects.all()\
+            .order_by('date_time')\
+            .reverse()[:2]
     serializer_class = EventAttendanceSerializer
 
 
 class EventAttendanceListViewSet(generics.ListAPIView):
-    queryset = EventAttendance.objects.all()
+    queryset = EventAttendance.objects.all()\
+            .order_by('date_time')\
+            .reverse()
     serializer_class = EventAttendanceListSerializer
     lookup_field = ('event_id')
 
