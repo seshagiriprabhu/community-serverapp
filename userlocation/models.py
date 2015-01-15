@@ -1,13 +1,14 @@
 from django.db import models
-from registeration.models import Registeration
+from django.utils import timezone
 from geofence.models import Geofence
+from registeration.models import Registeration
 
 class UserLocationData(models.Model):
     uid = models.AutoField(primary_key=True)
     email = models.ForeignKey(Registeration)
     accuracy = models.DecimalField(max_digits=5, decimal_places=2)
-    date_time = models.DateTimeField(auto_now_add=True, blank=True,\
-            verbose_name="Uploaded time")
+    date_time = models.DateTimeField(default=timezone.now,\
+            blank=True, verbose_name="Uploaded time")
     transition_type = models.IntegerField(blank=False)
     gid = models.ForeignKey(Geofence, verbose_name="Geofence")
     

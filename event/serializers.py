@@ -40,10 +40,10 @@ class EventAttendanceSerializer(serializers.ModelSerializer):
 class EventAttendanceListSerializer(serializers.ModelSerializer): 
     class Meta:
         model = EventAttendance
-        fields = ('email', 'status', 'decision_time')
+        fields = ('aid', 'email', 'status')
 
 
 class EventAttendanceDetailsSerializer(serializers.ModelSerializer):
     class Meta:
         model = EventAttendance
-        fields = ('aid', 'email', 'display_name', 'status', 'decision_time')
+        fields = ('aid', 'email', 'display_name', 'status', 'date_time')

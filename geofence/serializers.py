@@ -30,4 +30,4 @@ class GeofenceDetailsSerializer(serializers.ModelSerializer):
         model = Geofence
         fields = ('gid', 'fence_name', 'latitude', 'longitude',\
                 'geofence_radius', 'expiration_time', 'email',\
-                'created_date_time')
+                'date_time')

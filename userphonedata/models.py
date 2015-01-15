@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from registeration.models import Registeration
 
 BATTERY_STATE = (
@@ -16,7 +17,7 @@ CONNECTION_METHOD = (
 class UserPhoneData(models.Model):
     uid = models.AutoField(primary_key=True)
     email = models.ForeignKey(Registeration)
-    date_time = models.DateTimeField(auto_now_add=True, blank=True)
+    date_time = models.DateTimeField(default=timezone.now, blank=True)
     battery_state = models.CharField(
             max_length=1, blank=False, choices=BATTERY_STATE)
     app_power_consumption = models.DecimalField(

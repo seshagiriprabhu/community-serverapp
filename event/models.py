@@ -1,12 +1,16 @@
 from django.db import models
-from registeration.models import Registeration
+from datetime import datetime
+from django.utils import timezone
+
 from geofence.models import Geofence
+from registeration.models import Registeration, AutoDateTimeField
 
 GOING_STATUS = (
                 ('Going', 'Going'),
                 ('May be', 'May be'), 
                 ('Not going', 'Not Going')
 )
+
 
 class Event(models.Model):
     event_id = models.AutoField(primary_key=True)
@@ -19,7 +23,11 @@ class Event(models.Model):
     start_time = models.DateTimeField(blank=False)
     end_time = models.DateTimeField(blank=False)
     geofence_id = models.ForeignKey(Geofence)
-    
+    date_time = models.DateTimeField(default=timezone.now, blank=True,\
+            verbose_name="event created time")
+    modified_time = AutoDateTimeField(default=timezone.now,\
+            blank=False, verbose_name="Last Modified time")
+
     def create(self, validated_data):
         return Event.objects.create(**validated_data)
 
@@ -43,7 +51,10 @@ class EventAttendance(models.Model):
     display_name = models.CharField(blank=True,\
             max_length=32)
     status = models.CharField(max_length=10, choices=GOING_STATUS) 
-    decision_time = models.DateTimeField(auto_now_add=True, blank=False)
+    date_time = models.DateTimeField(default=timezone.now,\
+            blank=False, editable=False)
+    modified_time = AutoDateTimeField(default=timezone.now,\
+            blank=False, verbose_name="Last Modified time")
 
     def create(self, validated_data):
         return EventAttendance.objects.create(**validated_data)
@@ -51,6 +62,7 @@ class EventAttendance(models.Model):
     def save(self, *args, **kwargs):
         user_data = Registeration.objects.get(email=self.email)
         self.display_name = user_data.display_name
+
         super(EventAttendance, self).save(*args, **kwargs)
 
     class Meta:
