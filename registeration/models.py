@@ -21,7 +21,8 @@ class Registeration(models.Model):
             max_length=1, choices=GENDER_CHOICES, blank=True, null=True)
     display_name = models.CharField(
             max_length=32, blank=False, unique=True)
-    date_time = models.DateTimeField(default=timezone.now, blank=True)
+    date_time = models.DateTimeField(default=timezone.now,\
+            editable=False, blank=True)
     phone_number = models.CharField(max_length=11, blank=True)
     mobile_os = models.CharField(max_length=100, blank=False)
     mobile_device = models.CharField(max_length=100, blank=False)

@@ -24,7 +24,7 @@ class Event(models.Model):
     end_time = models.DateTimeField(blank=False)
     geofence_id = models.ForeignKey(Geofence)
     date_time = models.DateTimeField(default=timezone.now, blank=True,\
-            verbose_name="event created time")
+            editable=False, verbose_name="event created time")
     modified_time = AutoDateTimeField(default=timezone.now,\
             blank=False, verbose_name="Last Modified time")
 
@@ -62,7 +62,6 @@ class EventAttendance(models.Model):
     def save(self, *args, **kwargs):
         user_data = Registeration.objects.get(email=self.email)
         self.display_name = user_data.display_name
-
         super(EventAttendance, self).save(*args, **kwargs)
 
     class Meta:

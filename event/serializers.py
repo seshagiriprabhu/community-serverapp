@@ -1,8 +1,12 @@
 from rest_framework import serializers
 from django.forms import widgets
 from event.models import Event, EventAttendance
+from registeration.serializers import DateTimeTzAwareField
+
 
 class EventSerializer(serializers.ModelSerializer):
+    start_time = DateTimeTzAwareField()
+    end_time = DateTimeTzAwareField()
     class Meta:
         model = Event
         fields = ('event_name', 'event_description',\

@@ -17,7 +17,8 @@ CONNECTION_METHOD = (
 class UserPhoneData(models.Model):
     uid = models.AutoField(primary_key=True)
     email = models.ForeignKey(Registeration)
-    date_time = models.DateTimeField(default=timezone.now, blank=True)
+    date_time = models.DateTimeField(default=timezone.now,\
+            editable=False, blank=True)
     battery_state = models.CharField(
             max_length=1, blank=False, choices=BATTERY_STATE)
     app_power_consumption = models.DecimalField(

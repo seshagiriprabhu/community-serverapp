@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from registeration.models import Registeration
-
+from djgeojson.fields import PointField
 
 class Geofence(models.Model):
     gid = models.AutoField(primary_key=True)
@@ -14,7 +14,8 @@ class Geofence(models.Model):
             max_digits=9, decimal_places=2, blank=False)
     expiration_time = models.IntegerField(blank=True)
     email = models.ForeignKey(Registeration)
-    date_time = models.DateTimeField(default=timezone.now, blank=True)
+    date_time = models.DateTimeField(default=timezone.now, \
+            editable=False, blank=True)
     
     def create(self, validated_data):
         return Geofence.objects.create(**validated_data)
@@ -22,6 +23,7 @@ class Geofence(models.Model):
     def save(self, *args, **kwargs):
         # Expiration time of geofence is set as never expire
         self.expiration_time = -1 
+
         super(Geofence, self).save(*args, **kwargs)
 
     class Meta:

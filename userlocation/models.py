@@ -8,7 +8,7 @@ class UserLocationData(models.Model):
     email = models.ForeignKey(Registeration)
     accuracy = models.DecimalField(max_digits=5, decimal_places=2)
     date_time = models.DateTimeField(default=timezone.now,\
-            blank=True, verbose_name="Uploaded time")
+            editable=False, blank=True, verbose_name="Uploaded time")
     transition_type = models.IntegerField(blank=False)
     gid = models.ForeignKey(Geofence, verbose_name="Geofence")
     

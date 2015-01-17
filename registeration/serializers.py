@@ -2,6 +2,12 @@ from rest_framework import serializers
 from django.forms import widgets
 from registeration.models import Registeration
 
+class DateTimeTzAwareField(serializers.DateTimeField):
+    def to_native(self, value):
+        value = timezone.localtime(value)
+        return super(DateTimeTzAwareField, self).to_native(value)
+
+
 class RegisterationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Registeration
