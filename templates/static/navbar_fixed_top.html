@@ -1,0 +1,28 @@
+<!-- NAVBAR
+================================================== -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <i class="icon-bar"></i>
+                <i class="icon-bar"></i>
+            </button>
+            <a class="navbar-brand" href="/"><i class="fa fa-bug"></i> Community App</a>
+        </div><!--navbar-header-->
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" role="navigation" id="navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="{% ifequal request.path '/about/' %}active{% endifequal %}">
+                <a href="/about"><i class="fa fa-info-circle"></i> About</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                <a class="link-footer" href="http://www.youtube.com/" target="_youtube">
+                    <i class="fa fa-youtube"></i>
+                </a>
+                </li>
+            </ul>
+        </div><!--collapse-->
+    </div><!--container-->
+</nav> <!-- navbar navbar-inverse -->

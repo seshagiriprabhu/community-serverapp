@@ -1,0 +1,25 @@
+{% extends "static/base2.html" %}
+{% load leaflet_tags %}
+{% block title %}Community App Data Analyzer{% endblock %}
+{% block script %}
+{% leaflet_js %}
+{% endblock script %}
+{% block style %}
+{% leaflet_css %}
+<style>
+body {
+}
+html, body, #spots {
+    height: 100%;
+    width: 100%;
+    min-height: 600px;
+}
+</style>
+{% endblock style %}
+{% block body %}
+<script type="text/javascript">
+function main_map_init (map, options) {
+}
+</script>
+{% leaflet_map "spots" callback="window.map_init" %}
+{% endblock body %}

@@ -1,0 +1,27 @@
+{% extends "static/atom.html" %}
+{% block body_frame %}
+<body class="{% block body_class %}{% endblock %}" id="{% block body_id %}{% endblock %}">
+<div id="wrap">
+    <!-- NAVBAR BEGINS HERE -->
+    {% block navbar %}
+    {% include 'static/navbar_fixed_top.html' %}
+    {% endblock navbar %}
+    <!-- end of NAVBAR -->
+    <!-- Content -->
+    {% block content %}
+    {% block body %} {% endblock %}
+    <div class="push"></div>
+    {% endblock content %}
+    <!-- end of content -->
+</div> <!--wrap-->
+<!-- FOOTER -->
+{% block footer %}
+{% include 'static/footer.html'%}
+{% endblock footer %}
+<!-- FOOTER ENDS -->
+{% block script_base %} 
+<script src="{{ STATIC_URL }}js/jquery-2.1.1.min.js"></script>
+<script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+{% endblock script_base %}
+</body>
+{% endblock body_frame %}
