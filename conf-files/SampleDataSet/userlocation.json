@@ -1,0 +1,110 @@
+[
+    {
+        "email": "seshagiriprabhu@gmail.com", 
+        "accuracy": "1.00", 
+        "transition_type": 1, 
+        "gid": 14
+    }, 
+    {
+        "email": "seshagiriprabhu@gmail.com", 
+        "accuracy": "1.00", 
+        "transition_type": 0, 
+        "gid": 3
+    }, 
+    {
+        "email": "seshagiriprabhu@gmail.com", 
+        "accuracy": "1.00", 
+        "transition_type": 1, 
+        "gid": 3
+    }, 
+    {
+        "email": "seshagiriprabhu@gmail.com", 
+        "accuracy": "1.00", 
+        "transition_type": 0, 
+        "gid": 10
+    }, 
+    {
+        "email": "seshagiriprabhu@gmail.com", 
+        "accuracy": "1.00", 
+        "transition_type": 1, 
+        "gid": 10
+    }, 
+    {
+        "email": "seshagiriprabhu@gmail.com", 
+        "accuracy": "1.00", 
+        "transition_type": 0, 
+        "gid": 1
+    }, 
+    {
+        "email": "seshagiriprabhu@gmail.com", 
+        "accuracy": "1.00", 
+        "transition_type": 1, 
+        "gid": 1
+    }, 
+    {
+        "email": "seshagiriprabhu@gmail.com", 
+        "accuracy": "1.00", 
+        "transition_type": 0, 
+        "gid": 5
+    }, 
+    {
+        "email": "seshagiriprabhu@gmail.com", 
+        "accuracy": "1.00", 
+        "transition_type": 1, 
+        "gid": 5
+    }, 
+    {
+        "email": "seshagiriprabhu@gmail.com", 
+        "accuracy": "1.00", 
+        "transition_type": 0, 
+        "gid": 14
+    }, 
+    {
+        "email": "seshagiriprabhu@gmail.com", 
+        "accuracy": "1.00", 
+        "transition_type": 1, 
+        "gid": 14
+    }, 
+    {
+        "email": "seshagiriprabhu@gmail.com", 
+        "accuracy": "1.00", 
+        "transition_type": 0, 
+        "gid": 15
+    }, 
+    {
+        "email": "seshagiriprabhu@gmail.com", 
+        "accuracy": "1.00", 
+        "transition_type": 1, 
+        "gid": 15
+    }, 
+    {
+        "email": "seshagiriprabhu@gmail.com", 
+        "accuracy": "1.00", 
+        "transition_type": 0, 
+        "gid": 16
+    }, 
+    {
+        "email": "seshagiriprabhu@gmail.com", 
+        "accuracy": "1.00", 
+        "transition_type": 1, 
+        "gid": 16
+    }, 
+    {
+        "email": "seshagiriprabhu@gmail.com", 
+        "accuracy": "1.00", 
+        "transition_type": 0, 
+        "gid": 17
+    }, 
+    {
+        "email": "seshagiriprabhu@gmail.com", 
+        "accuracy": "1.00", 
+        "transition_type": 1, 
+        "gid": 17
+    }, 
+    {
+        "email": "seshagiriprabhu@gmail.com", 
+        "accuracy": "1.00", 
+        "transition_type": 0, 
+        "gid": 14
+    }
+]
