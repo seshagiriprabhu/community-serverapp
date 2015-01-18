@@ -1,0 +1,129 @@
+Zentrum 51.5333333 9.9333333
+[
+    {
+        "fence_name": "Zentrum Altes Rathus", 
+        "latitude": "51.53281", 
+        "longitude": "9.93515", 
+        "geofence_radius": "100.00", 
+        "email": "blob2@blob.com"
+    }, 
+    {
+        "fence_name": "Gottingen City South", 
+        "latitude": "51.53114", 
+        "longitude": "9.93515", 
+        "geofence_radius": "100.00", 
+        "email": "blob2@blob.com"
+    }, 
+    {
+        "fence_name": "Gottingen City East", 
+        "latitude": "51.53428", 
+        "longitude": "9.93989", 
+        "geofence_radius": "100.00", 
+        "email": "blob2@blob.com"
+    }, 
+    {
+        "fence_name": "Gottingen City West", 
+        "latitude": "51.53462", 
+        "longitude": "51.53462", 
+        "geofence_radius": "100.00", 
+        "email": "blob2@blob.com"
+    }, 
+    {
+        "fence_name": "Saturn", 
+        "latitude": "51.53665", 
+        "longitude": "9.93444", 
+        "geofence_radius": "100.00", 
+        "email": "blob2@blob.com"
+    }, 
+    {
+        "fence_name": "Club Savoy", 
+        "latitude": "51.53711", 
+        "longitude": "9.93108", 
+        "geofence_radius": "50.00", 
+        "email": "blob2@blob.com"
+    }, 
+    {
+        "fence_name": "Lidil Supermarket, Annastrasse", 
+        "latitude": "51.54704", 
+        "longitude": "9.93385", 
+        "geofence_radius": "20.00", 
+        "email": "blob2@blob.com"
+    }, 
+    {
+        "fence_name": "Rewe Supermarket, Annastrasse", 
+        "latitude": "51.54591", 
+        "longitude": "9.93314", 
+        "geofence_radius": "20.00", 
+        "email": "blob2@blob.com"
+    }, 
+    {
+        "fence_name": "Penny Supermarket", 
+        "latitude": "51.54964", 
+        "longitude": "9.9341", 
+        "geofence_radius": "20.00", 
+        "email": "blob2@blob.com"
+    }, 
+    {
+        "fence_name": "Alnatura", 
+        "latitude": "51.53195", 
+        "longitude": "9.93827", 
+        "geofence_radius": "20.00", 
+        "email": "blob2@blob.com"
+    }, 
+    {
+        "fence_name": "Central Library", 
+        "latitude": "51.53976", 
+        "longitude": "9.93588", 
+        "geofence_radius": "50.00", 
+        "email": "blob2@blob.com"
+    },
+    {
+        "fence_name": "ZHG and Central Mensa", 
+        "latitude": "51.54185", 
+        "longitude": "9.93523", 
+        "geofence_radius": "75.00", 
+        "email": "blob2@blob.com"
+    },
+    {
+        "fence_name": "Gottingen Bahnhof", 
+        "latitude": "51.53682", 
+        "longitude": "9.92623", 
+        "geofence_radius": "100.00", 
+        "email": "blob2@blob.com"
+    },
+    {
+        "fence_name": "Studentendorf, Gutenbergstr", 
+        "latitude": "51.54643", 
+        "longitude": "9.9333333", 
+        "geofence_radius": "50.00", 
+        "email": "blob2@blob.com"
+    },
+    {
+        "fence_name": "Sportscenter", 
+        "latitude": "51.55099", 
+        "longitude": "9.95119", 
+        "geofence_radius": "150.00", 
+        "email": "blob2@blob.com"
+    },
+    {
+        "fence_name": "UMG Klinikum", 
+        "latitude": "51.55118", 
+        "longitude": "9.94265", 
+        "geofence_radius": "150.00", 
+        "email": "blob2@blob.com"
+    },
+    {
+        "fence_name": "Faculty of Infomatics", 
+        "latitude": "51.56054", 
+        "longitude": "9.94846", 
+        "geofence_radius": "50.00", 
+        "email": "blob2@blob.com"
+    },
+    {
+        "fence_name": "Faculty of Infomatics", 
+        "latitude": "51.556", 
+        "longitude": "9.94805", 
+        "geofence_radius": "50.00", 
+        "email": "blob2@blob.com"
+    },
+]
