@@ -1,18 +1,5 @@
-from django.shortcuts import HttpResponseRedirect, render
-from django.shortcuts import get_object_or_404, render_to_response
-from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.template.loader import get_template
-
-# Error handling
-from django.core.exceptions import ObjectDoesNotExist
-from django.db import IntegrityError
-from django.http import Http404
-
-try: import simplejson as json
-except ImportError: import json
-
 from geofence.models import Geofence
 
 def error_key(request):
@@ -24,10 +11,14 @@ def error_key(request):
 
 
 def home(request):
-    geofence_list = []
     geofence_list = Geofence.objects.all() 
+    dbdata = []
+    for geofence in geofence_list:
+        dbdata.append([str(geofence.fence_name),\
+                float(geofence.latitude), float(geofence.longitude),\
+                float(geofence.geofence_radius)])
     return render_to_response('general/home.html',\
-            {'geofence_list':geofence_list},RequestContext(request)) 
+        {'dbdata':dbdata},RequestContext(request)) 
 
 
 def about(request):

@@ -19,7 +19,22 @@ html, body, #spots {
 {% block body %}
 <script type="text/javascript">
 function main_map_init (map, options) {
+    {% for data in dbdata %}
+    L.circle([{{ data.1 }}, {{ data.2 }}], {{ data.3 }}, {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.3
+    }).addTo(map).bindPopup("<b>{{ data.0 }}</b>");
+    {% endfor %}
+    var popup = L.popup();
+    function onMapClick(e) {
+        popup
+            .setLatLng(e.latlng)
+            .setContent("You clicked the map at " + e.latlng.toString())
+            .openOn(map);
+    }
+    map.on('click', onMapClick);
 }
 </script>
-{% leaflet_map "spots" callback="window.map_init" %}
+{% leaflet_map "spots" callback="window.main_map_init" %}
 {% endblock body %}
