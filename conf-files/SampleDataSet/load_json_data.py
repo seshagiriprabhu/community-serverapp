@@ -6,30 +6,29 @@ import json
 import requests
 import os
 
+headers = {'Content-type': 'application/json',\
+        'Accept': 'application/json'}
+
 BASE_URL = 'http://localhost:8000/'
 register_url = BASE_URL + 'register/'
 geofence_url = BASE_URL + 'geofence/'
+userlocation_url = BASE_URL + 'location/'
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 register_file = os.path.join(BASE_DIR, 'registeration.json')
 geofence_file = os.path.join(BASE_DIR, 'geofence.json')
+userlocation_file = os.path.join(BASE_DIR, 'userlocation.json')
 
-headers = {'Content-type': 'application/json', 'Accept': 'application/json'}
+files = [register_file, geofence_file, userlocation_file]
+urls = [register_url, geofence_url, userlocation_url]
 
-# Load the JSON data from registeration.json file and post it in server
-with open(register_file) as data_file:
-    register_json_data = json.load(data_file)
-    for data in register_json_data:
-        register_data = json.dumps(data)
-        r = requests.post(register_url, data=register_data, headers=headers)
-        print r.text
-
-# Load the JSON data from geofence.json file and post it in server
-with open(geofence_file) as data_file:
-    geofence_json_data = json.load(data_file)
-    for data in geofence_json_data:
-        geofence_data = json.dumps(data)
-        r = requests.post(geofence_url, data=geofence_data, headers=headers)
-        print r.text
-
+# Load the JSON data from files and post it in server
+for x in xrange(len(files)):
+    with open(files[x]) as data_file:
+        json_data = json.load(data_file)
+        for data in json_data:
+            processed_data = json.dumps(data)
+            r = requests.post(urls[x], data=processed_data,\
+                    headers=headers)
+            print r.text
 r.close()
