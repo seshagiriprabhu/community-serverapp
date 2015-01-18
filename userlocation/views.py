@@ -24,7 +24,7 @@ class UserLocationListViewSet(generics.ListAPIView):
     permission_classes = (IsAdminUser,)
     queryset = UserLocationData.objects.all()\
             .order_by('date_time')\
-            .reverse()[:5]
+            .reverse()
     serializer_class = UserLocationListSerializer
 
 

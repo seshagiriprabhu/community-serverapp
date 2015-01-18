@@ -15,7 +15,7 @@ class UserLocationSerializer(serializers.ModelSerializer):
 class UserLocationListSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserLocationData
-        fields = ('date_time', 'email', 'transition_type')
+        fields = ('date_time', 'email', 'transition_type', 'gid')
 
 
 class UserLocationDetailsSerializer(serializers.ModelSerializer):
