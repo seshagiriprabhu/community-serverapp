@@ -7,10 +7,12 @@ from userphonedata import urls as user_phone_data_urls
 from event import urls as event_urls
 from geofence import urls as geofence_urls
 from dataonmap import urls as dataonmap_urls
+from dataonmap import views as dataonmap_views
 admin.autodiscover()
 
 urlpatterns = [
-    url(r'^$', include(dataonmap_urls)),
+    url(r'^$', dataonmap_views.home),
+    url(r'^data_analysis/', include(dataonmap_urls)),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^register/', include(reg_urls)),
     url(r'^location/', include(user_loc_urls)),
