@@ -1,128 +1,18 @@
-[
-    {
-        "email": "seshagiriprabhu@gmail.com", 
-        "date_time": "2015-01-21T09:40:00Z", 
-        "accuracy": "1.00", 
-        "transition_type": 0, 
-        "gid": 14
-    }
-    {
-        "email": "seshagiriprabhu@gmail.com", 
-        "date_time": "2015-01-21T09:59:00Z", 
-        "accuracy": "1.00", 
-        "transition_type": 1, 
-        "gid": 17
-    }, 
-    {
-        "email": "seshagiriprabhu@gmail.com", 
-        "date_time": "2015-01-21T10:59:00Z", 
-        "accuracy": "1.00", 
-        "transition_type": 0, 
-        "gid": 17
-    }, 
-    {
-        "email": "seshagiriprabhu@gmail.com", 
-        "date_time": "2015-01-21T11:16:00Z", 
-        "accuracy": "1.00", 
-        "transition_type": 1, 
-        "gid": 14
-    }
-    {
-        "email": "seshagiriprabhu@gmail.com", 
-        "date_time": "2015-01-21T11:29:00Z", 
-        "accuracy": "1.00", 
-        "transition_type": 0, 
-        "gid": 14
-    }
-    {
-        "email": "seshagiriprabhu@gmail.com", 
-        "date_time": "2015-01-21T11:51:00Z", 
-        "email": "seshagiriprabhu@gmail.com", 
-        "transition_type": 1, 
-        "gid": 15
-    }
-    {
-        "email": "seshagiriprabhu@gmail.com", 
-        "date_time": "2015-01-21T13:12:00Z", 
-        "email": "seshagiriprabhu@gmail.com", 
-        "transition_type": 0, 
-        "gid": 15
-    },  
-    {
-        "email": "seshagiriprabhu@gmail.com", 
-        "date_time": "2015-01-21T13:22:00Z", 
-        "accuracy": "1.00", 
-        "transition_type": 1, 
-        "gid": 14
-    },
-    {
-        "email": "seshagiriprabhu@gmail.com", 
-        "date_time": "2015-01-21T18:07:00Z", 
-        "accuracy": "1.00", 
-        "transition_type": 0, 
-        "gid": 14
-    },
-    {
-        "email": "seshagiriprabhu@gmail.com", 
-        "date_time": "2015-01-21T18:12:00Z", 
-        "accuracy": "1.00", 
-        "transition_type": 1, 
-        "gid": 5
-    },
-    {
-        "email": "seshagiriprabhu@gmail.com", 
-        "date_time": "2015-01-21T18:14:00Z", 
-        "accuracy": "1.00", 
-        "transition_type": 0, 
-        "gid": 5
-    },
-    {
-        "email": "seshagiriprabhu@gmail.com", 
-        "date_time": "2015-01-21T18:18:00Z", 
-        "accuracy": "1.00", 
-        "transition_type": 1, 
-        "gid": 1
-    },
-    {
-        "email": "seshagiriprabhu@gmail.com", 
-        "date_time": "2015-01-21T18:19:00Z", 
-        "accuracy": "1.00", 
-        "transition_type": 0, 
-        "gid": 1
-    },
-    {
-        "email": "seshagiriprabhu@gmail.com", 
-        "date_time": "2015-01-21T18:23:00Z", 
-        "accuracy": "1.00", 
-        "transition_type": 1, 
-        "gid": 10
-    },
-    {
-        "email": "seshagiriprabhu@gmail.com", 
-        "date_time": "2015-01-21T19:05:00Z", 
-        "accuracy": "1.00", 
-        "transition_type": 0, 
-        "gid": 10
-    },
-    {
-        "email": "seshagiriprabhu@gmail.com", 
-        "date_time": "2015-01-21T19:11:00Z", 
-        "accuracy": "1.00", 
-        "transition_type": 1, 
-        "gid": 3
-    },
-    {
-        "email": "seshagiriprabhu@gmail.com", 
-        "date_time": "2015-01-21T19:12:00Z", 
-        "accuracy": "1.00", 
-        "transition_type": 0, 
-        "gid": 3
-    },
-    {
-        "email": "seshagiriprabhu@gmail.com", 
-        "date_time": "2015-01-21T19:24:00Z", 
-        "accuracy": "1.00", 
-        "transition_type": 1, 
-        "gid": 14
-    },
-]
+[{"email": "seshagiriprabhu@gmail.com", "date_time": "2015-01-21T09:40:00Z", "accuracy": "1.00", "transition_type": "0", "gid": "14"},
+{"email": "seshagiriprabhu@gmail.com", "date_time": "2015-01-21T09:59:00Z", "accuracy": "1.00", "transition_type": "1", "gid": "17"}, 
+{"email": "seshagiriprabhu@gmail.com", "date_time": "2015-01-21T10:59:00Z", "accuracy": "1.00", "transition_type": "0", "gid": "17"}, 
+{"email": "seshagiriprabhu@gmail.com", "date_time": "2015-01-21T11:16:00Z", "accuracy": "1.00", "transition_type": "1", "gid": "14"},
+{"email": "seshagiriprabhu@gmail.com", "date_time": "2015-01-21T11:29:00Z", "accuracy": "1.00", "transition_type": "0", "gid": "14"},
+{"email": "seshagiriprabhu@gmail.com", "date_time": "2015-01-21T11:51:00Z", "accuracy": "1.00", "transition_type": "1", "gid": "15"},
+{"email": "seshagiriprabhu@gmail.com", "date_time": "2015-01-21T13:12:00Z", "accuracy": "1.00", "transition_type": "0", "gid": "15"},  
+{"email": "seshagiriprabhu@gmail.com", "date_time": "2015-01-21T13:22:00Z", "accuracy": "1.00", "transition_type": "1", "gid": "14"},
+{"email": "seshagiriprabhu@gmail.com", "date_time": "2015-01-21T18:07:00Z", "accuracy": "1.00", "transition_type": "0", "gid": "14"},
+{"email": "seshagiriprabhu@gmail.com", "date_time": "2015-01-21T18:12:00Z", "accuracy": "1.00", "transition_type": "1", "gid": "5" },
+{"email": "seshagiriprabhu@gmail.com", "date_time": "2015-01-21T18:14:00Z", "accuracy": "1.00", "transition_type": "0", "gid": "5" },
+{"email": "seshagiriprabhu@gmail.com", "date_time": "2015-01-21T18:18:00Z", "accuracy": "1.00", "transition_type": "1", "gid": "1" },
+{"email": "seshagiriprabhu@gmail.com", "date_time": "2015-01-21T18:19:00Z", "accuracy": "1.00", "transition_type": "0", "gid": "1" },
+{"email": "seshagiriprabhu@gmail.com", "date_time": "2015-01-21T18:23:00Z", "accuracy": "1.00", "transition_type": "1", "gid": "10"},
+{"email": "seshagiriprabhu@gmail.com", "date_time": "2015-01-21T19:05:00Z", "accuracy": "1.00", "transition_type": "0", "gid": "10"},
+{"email": "seshagiriprabhu@gmail.com", "date_time": "2015-01-21T19:11:00Z", "accuracy": "1.00", "transition_type": "1", "gid": "3" },
+{"email": "seshagiriprabhu@gmail.com", "date_time": "2015-01-21T19:12:00Z", "accuracy": "1.00", "transition_type": "0", "gid": "3" },
+{"email": "seshagiriprabhu@gmail.com", "date_time": "2015-01-21T19:24:00Z", "accuracy": "1.00", "transition_type": "1", "gid": "14"}]
