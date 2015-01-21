@@ -1,5 +1,4 @@
 from django.db import models
-from datetime import datetime
 from django.utils import timezone
 
 from geofence.models import Geofence
@@ -29,6 +28,8 @@ class Event(models.Model):
             blank=False, verbose_name="Last Modified time")
 
     def create(self, validated_data):
+        self.start_time = timezone(self.start_time).make_aware()
+        self.end_time = timezone(self.end_time).make_aware()
         return Event.objects.create(**validated_data)
 
     def save(self, *args, **kwargs):

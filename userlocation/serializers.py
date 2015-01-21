@@ -6,7 +6,8 @@ from userlocation.models import UserLocationData
 class UserLocationSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserLocationData
-        fields = ('email', 'accuracy', 'transition_type', 'gid')
+        fields = ('email', 'date_time',\
+                'accuracy', 'transition_type', 'gid')
 
     def create(self, validated_data):
         return UserLocationData.objects.create(**validated_data)
