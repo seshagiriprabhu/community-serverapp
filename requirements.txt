@@ -1,6 +1,5 @@
 Django
 Pygments
-South
 argparse
 djangorestframework
 django-leaflet

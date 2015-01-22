@@ -96,7 +96,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'rest_framework',
     'leaflet',
-    'djgeojson',
     # Custom Created Apps
     'dataonmap',
     'registeration',
