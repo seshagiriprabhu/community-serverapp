@@ -1,7 +1,9 @@
+{% load leaflet_tags %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta charset="utf-8">
 
         <title> {% block title %} {% endblock %}</title>
@@ -12,16 +14,23 @@
         <![endif]-->
         {% endblock html5shim %}
         {% block style_base %}
-        <link type="text/css" href="{{ STATIC_URL }}font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-        <link type="text/css" href="{{ STATIC_URL }}css/errors.css" rel="stylesheet" />
-        <link type="text/css" href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet" />
-        <link type="text/css" href="{{ STATIC_URL }}css/styles.css" rel="stylesheet" />
+        <link href="{{ STATIC_URL }}font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="{{ STATIC_URL }}css/errors.css" rel="stylesheet" />
+        <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet" />
+        {% leaflet_css %}
+        <link href="{{ STATIC_URL }}css/MarkerCluster.css" rel="stylesheet" />
+        <link href="{{ STATIC_URL }}css/MarkerCluster.Default.css" rel="stylesheet" />
+        <link href="{{ STATIC_URL }}css/styles.css" rel="stylesheet" />
         {% endblock style_base %}
         {% block style %}
         {% endblock style %}
         <link rel="shortcut icon" href="{{ STATIC_URL }}images/favicon.ico" />
         <link rel="shortcut icon" href="{{ STATIC_URL }}images/favicon.ico" />
         {% block script %}
+        <script src="{{ STATIC_URL }}js/jquery-2.1.1.min.js"></script>
+        <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+        {% leaflet_js %}
+        <script src="{{ STATIC_URL }}js/leaflet.markercluster-src.js"></script>
         {% endblock script %}
     </head>
     {% block body_frame %}

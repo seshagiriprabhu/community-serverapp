@@ -1,17 +1,8 @@
 {% extends "static/base2.html" %}
 {% load leaflet_tags %}
 {% block title %}Community App Data Analyzer{% endblock %}
-{% block script %}
-{% leaflet_js %}
-<script src="{{ STATIC_URL }}js/leaflet.markercluster-src.js"></script>
-{% endblock script %}
 {% block style %}
-{% leaflet_css %}
-<link type="text/css" href="{{ STATIC_URL }}css/MarkerCluster.css" rel="stylesheet" />
-<link type="text/css" href="{{ STATIC_URL }}css/MarkerCluster.Default.css" rel="stylesheet" />
 <style>
-body {
-}
 html, body, #spots {
     height: 100%;
     width: 100%;
