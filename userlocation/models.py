@@ -1,9 +1,9 @@
 from django.db import models
 from django.utils import timezone
-
+from django.contrib.gis.geos import Point
 from geofence.models import Geofence
 from registeration.models import Registeration
-
+from dataonmap.models import UserGeoLocation
 
 class UserLocationData(models.Model):
     uid = models.AutoField(primary_key=True)
@@ -18,6 +18,16 @@ class UserLocationData(models.Model):
         return UserLocationData.objects.create(**validated_data)
 
     def save(self, *args, **kwargs):
+        current_gid = str(self.gid).partition(',')[0]
+        geofence = Geofence.objects.get(gid=current_gid)
+        userdata = Registeration.objects.get(email=self.email)
+        UserGeoLocation(disp_name=userdata.display_name,\
+                date_time=self.date_time,\
+                t_type=self.transition_type,\
+                fence_name = geofence.fence_name,\
+                geom=Point(
+                float(geofence.longitude),\
+                float(geofence.latitude))).save()
         super(UserLocationData, self).save(*args, **kwargs)
 
     class Meta:

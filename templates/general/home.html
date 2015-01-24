@@ -1,65 +1,23 @@
 {% extends "static/base2.html" %}
 {% load leaflet_tags %}
-{% block title %}Community App Data Analyzer{% endblock %}
+{% load staticfiles %}
 {% block style %}
 <style>
-html, body, #spots {
-    height: 100%;
-    width: 100%;
-    min-height: 600px;
+body, html {
+    overflow: hidden;
 }
 </style>
 {% endblock style %}
+{% block title %}Community App Data Analyzer{% endblock %}
 {% block body %}
-<script type="text/javascript">
-function main_map_init (map, options) {
-    var popup = L.popup();
-    var fencedata = {{ fencedata|safe }}; 
-    var userlocationdata =  {{ userlocationdata|safe }}
-    /* MarkerCluster to handle the overlapping markers in map */
-    var markers = L.markerClusterGroup();
-    /* A function to return the LatLng of a place clicked on mapped */
-    function onMapClick(e) {
-        popup
-            .setLatLng(e.latlng)
-            .setContent("You clicked the map at " + e.latlng.toString())
-            .openOn(map);
-    }
-    /* Creating Circles from geofence data */
-    for (var i = 0; i < fencedata.length; i++) {
-        var a = fencedata[i];
-        var circle = L.circle(new L.LatLng(a[1], a[2]),a[3],{
-            color: 'red',
-            fillColor: '#f03',
-            fillOpacity: 0.2,
-            weight: 1,
-            opacity: 0.3
-            });
-        circle.bindPopup(a[0]);
-        circle.addTo(map);
-    }
-    /* Creating markers from the data */
-    for (var i = 0; i < userlocationdata.length; i++) {
-        var a = userlocationdata[i];
-        var marker = L.marker (new L.LatLng(a[3], a[4]));
-        marker.bindPopup('<b>' +a[0]+ '</b>: '+
-                a[2]+ " " +a[5]+ " at "+a[1]);
-        markers.addLayer(marker);
-    }
-    /* Zoom to bounds in one easy click */
-    markers.on('clusterclick', function (a) {
-        a.layer.zoomToBounds();
-    });
-    markers.on('click', function (a) {
-        console.log('marker ' + a.layer);
-    });
-
-    markers.on('clusterclick', function (a) {
-        console.log('cluster ' + a.layer.getAllChildMarkers().length);
-    });
-    map.addLayer(markers);
-    map.on('click', onMapClick);
-}
-</script>
-{% leaflet_map "spots" callback="window.main_map_init" %}
+<div id="map" class="thumbnail"> </div>
+<!-- Sidebar -->
+<div class="well" id="sidebar">
+    <h4>Map Filter</h4><hr>
+    <p><strong>User: </strong></p>
+    <select class="form-control" id="select_user" onchange="getResult()">
+        <option value="all">Show All</option>
+    </select>      
+</div><!--well--> 
+<script src="{{ STATIC_URL }}js/map.js"></script>
 {% endblock body %}
