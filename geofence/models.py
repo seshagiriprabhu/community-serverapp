@@ -27,10 +27,8 @@ class Geofence(models.Model):
 
     class Meta:
         db_table = 'geofence'
-        ordering = ('fence_name', 'latitude', 'longitude',\
+        ordering = ('gid', 'fence_name', 'latitude', 'longitude',\
                 'geofence_radius', 'email')
 
     def __unicode__(self):
         return u'%s, %s' % (self.gid, self.fence_name)
-
-

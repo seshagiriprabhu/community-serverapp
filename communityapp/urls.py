@@ -1,24 +1,18 @@
-from django.conf.urls import *
+from django.conf.urls import  patterns, include, url
 from django.contrib import admin
-from rest_framework import routers
-from registeration import urls as reg_urls
-from userlocation import urls as user_loc_urls
-from userphonedata import urls as user_phone_data_urls
-from event import urls as event_urls
-from geofence import urls as geofence_urls
-from dataonmap import urls as dataonmap_urls
 from dataonmap import views as dataonmap_views
 admin.autodiscover()
 
 urlpatterns = [
     url(r'^$', dataonmap_views.home),
-    url(r'^data_analysis/', include(dataonmap_urls)),
+    url(r'^data_analysis/', include('dataonmap.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^register/', include(reg_urls)),
-    url(r'^location/', include(user_loc_urls)),
-    url(r'^data/', include(user_phone_data_urls)),
-    url(r'^event/', include(event_urls)),
-    url(r'^geofence/', include(geofence_urls)),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    url(r'^register/', include('registeration.urls')),
+    url(r'^location/', include('userlocation.urls')),
+    url(r'^data/', include('userphonedata.urls')),
+    url(r'^event/', include('event.urls')),
+    url(r'^geofence/', include('geofence.urls')),
+    url(r'^api-auth/', include('rest_framework.urls',\
+            namespace='rest_framework'))
 ]
 
