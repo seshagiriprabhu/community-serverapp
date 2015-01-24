@@ -132,10 +132,14 @@ body {
   /*background-color: #eee;*/
 }
 
-body h3, h4, p, li {
-  font-family: 'Marmelad';
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: Oswald;
 }
-
 /* B A S E */
 #footer_info {
   /*  */
@@ -209,6 +213,7 @@ footer p {
     display: block;
 }
 body, html {
+    overflow-x: hidden;
     height: 100%;
     width: 100%;
     font-family: 'Open Sans';
