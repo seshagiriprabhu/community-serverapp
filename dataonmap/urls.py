@@ -10,5 +10,8 @@ urlpatterns = [
     url(r'^location/$',
         views.get_userlocation,
         name='user-location'),
+    url(r'^location/filter/$',
+        views.map_filter,
+        name='map-filter'),
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)

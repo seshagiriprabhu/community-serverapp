@@ -17,7 +17,23 @@ body, html {
     <p><strong>User: </strong></p>
     <select class="form-control" id="select_user" onchange="getResult()">
         <option value="all">Show All</option>
-    </select>      
+        <option disabled>---------------------------------------</option>
+        {% for user in users %}
+        <option value="{{ user }}">{{ user }}</option>
+        {% endfor %}
+    </select>
+    <br/>
+    <p><strong>Relevance: </strong></p>
+    <p><span id="lbl" style="font-family:Marmelad;">Currently showing all the location data</span></p>
+    <div id="slider_period" data-value="" style="width:100%; margin-left: 6px;"></div>
+    <br/>
+    <p><strong>Day Night: </strong></p>
+    <select class="form-control" id="select_dayNight" onchange="getResult()">
+        <option value="all">Show All</option>
+        <option disabled>---------------------------------------</option>
+        <option value="day">Day time (6:00-18:00)</option>
+        <option value="night">Night time (18:00-6:00)</option>
+    </select>
 </div><!--well--> 
 <script src="{{ STATIC_URL }}js/map.js"></script>
 {% endblock body %}
