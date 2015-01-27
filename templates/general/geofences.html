@@ -1,0 +1,15 @@
+{% extends "static/base2.html" %}
+{% load leaflet_tags %}
+{% load staticfiles %}
+{% block style %}
+<style>
+body, html {
+    overflow: hidden;
+}
+</style>
+{% endblock style %}
+{% block title %}Community App Data Analyzer{% endblock %}
+{% block body %}
+<div id="map" class="thumbnail"></div>
+<script src="{{ STATIC_URL }}js/geomap.js"></script>
+{% endblock body %}

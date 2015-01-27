@@ -87,6 +87,11 @@ def home(request):
             {'users':users}, RequestContext(request)) 
 
 
+def geomap(request):
+    return render_to_response('general/geofences.html',\
+            {}, RequestContext(request)) 
+
+
 def about(request):
     return render_to_response('general/about.html',\
             {'page':'about'},RequestContext(request))
