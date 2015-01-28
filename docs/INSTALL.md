@@ -6,21 +6,30 @@ INSTALLATION
 3. Install the GNU/Linux requirements
 4. Install the python django requirements
 5. Setup database as mentioned below
-6. Copy the `httpd.conf` file to `/etc/apache2` directory
+6. Copy the `httpd.conf` from `conf-files` to `/etc/apache2` directory
+7. Copy the `000-default.conf` from conf-files to 
+`/etc/apache2/sites-available/`
 7. Restart `apache` and server will be running on port 80 :)
 ## GNU/Linux requirements
 ```bash
-$ sudo apt-get install binutils python-pip git postgresql-server-dev-9.3 
-postgresql-9.3-postgis-2.1 python-dev python-psycopg2 python-setuptools
+$ sudo apt-get install binutils git postgresql-server-dev-9.3 
+postgresql-9.3-postgis-2.1 python-dev python-setuptools
 postgis gdal-bin
 ```
 ## Python Django requirements
-`requirements.txt` could be found inside the root directory of this repository
+In-order to install django requirements, `python-pip` package needs to be
+installed first. 
+```bash
+$ sudo easy_install pip
+```
+`requirements.txt` could be found inside the root directory of this 
+repository
 ```bash
 $ sudo pip install -r requirements.txt
 ```
 ## Setting up DB
-Change the password of the postgresql db
+Change the password of the postgresql db. The same $PASSWORD should be 
+updated in the copied `local_settings.py` file in `communityapp` directory
 ```bash
 $ sudo -u postgres psql -c "ALTER USER postgres PASSWORD '$PASSWORD';"
 ```
