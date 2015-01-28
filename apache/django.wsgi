@@ -4,10 +4,10 @@ sys.path.append('/usr/local/django')
 sys.path.append('/var/www')
 sys.path.append('/var/www/community-serverapp')
 sys.path.append('/var/www/community-serverapp/media')
-os.environ['DJANGO_SETTINGS_MODULE'] = 'community-serverapp.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'communityapp.settings'
 
-import django.core.handlers.wsgi
-application = django.core.handlers.wsgi.WSGIHandler()
+from django.core.wsgi import get_wsgi_application
+application = get_wsgi_application()
 
 path = '/var/www/community-serverapp'
 if path not in sys.path:
