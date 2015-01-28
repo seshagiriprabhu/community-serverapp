@@ -3,4 +3,5 @@ Pygments
 argparse
 djangorestframework
 django-leaflet
+django-geojson
 wsgiref

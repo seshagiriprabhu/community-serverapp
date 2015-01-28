@@ -1,77 +1,42 @@
 INSTALLATION
 ============
-
-This file contains instructions to setup a development version of the application.
-
-
-Setting up virtualenv
----------------------
-
-The recommended way to develop Python projects is to use virtual environments for each project.
-
-Install `virtualenvwrapper` which will install `virtualenv` as well.
-
-``` bash
-$ pip install virtualenvwrapper
+1. Clone the repository and copy it to `/var/www/`
+2. Copy `local-settings.py` from `conf-files` to `communityapp` directory as 
+`local_settings.py` and set values as required.
+3. Install the GNU/Linux requirements
+4. Install the python django requirements
+5. Setup database as mentioned below
+6. Copy the `httpd.conf` file to `/etc/apache2` directory
+7. Restart `apache` and server will be running on port 80 :)
+## GNU/Linux requirements
+```bash
+$ sudo apt-get install binutils python-pip git postgresql-server-dev-9.3 
+postgresql-9.3-postgis-2.1 python-dev python-psycopg2 python-setuptools
+postgis gdal-bin
 ```
-
-Add following to the shell's startup file(`.zshrc`, `.bashrc`, .`profile`, etc)
-
-``` bash
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/directory-you-do-development-in
-source /usr/local/bin/virtualenvwrapper.sh
+## Python Django requirements
+`requirements.txt` could be found inside the root directory of this repository
+```bash
+$ sudo pip install -r requirements.txt
 ```
-
-and restart the terminal(or run the source command with the startup file of your shell as the argument).
-
-Create a new virtual environment with any name.
-
-``` bash
-$ mkvirtualenv website
+## Setting up DB
+Change the password of the postgresql db
+```bash
+$ sudo -u postgres psql -c "ALTER USER postgres PASSWORD '$PASSWORD';"
 ```
-
-This command will create and switch to the virtual environment(the name of the environment will be prepended to the shell).
-If not, run the following command to activate the virtual environment.
-
-``` bash
-$ workon website
+Create DB `communityapp`
+```bash
+$ sudo -u postgres psql createdb communityapp
 ```
-
-Now let's install the required packages within this virtualenv.
-
-``` bash
-$ pip install -r requirements.txt
+Enable GIS to the database
+```bash
+$ sudo -u postgres psql -d communityapp -c "create extension postgis;"
 ```
-
-Specifying website settings
----------------------------
-
-- Copy template local-settings.py to same directory where settings.py resides and rename it to `local_settings.py`.
-- Set values for `DATABASES` and `ADMINS`. `sqlite3` is a good choice during testing since it's easy to setup(just give path to database
-  file) but not in production.
-- Generate the `SECRET_KEY` as per instructions in the `local_settings.py` file.
-- You might want to set `DEBUG` = `True` for testing else set a value for `ALLOWED_HOSTS` if deploying in production.
-
-
-Setting up the database
------------------------
-
-After specifying the settings, run the following commands to create the database.
-
-``` bash
-$ python manage.py syncdb --all
-$ python manage.py migrate --fake
-```
-
-Create a superuser when prompted to do so. This user will be used to login to admin interface of the site.
-
-
-Running the development server
----------------------------
-
-If no errors are reported, the development server is ready. Run the server by issuing the command
-
-``` bash
-$ python manage.py runserver
-```
+## Possible Issues
+1. Invalid command `WSGIScriptAlias`, perhaps misspelled or defined by a 
+module not included in the server configuration.
+This is because `WSGI` module is not loaded into `apache2`. Add the 
+following line to `/etc/apache2/mods-available/wsgi.load`
+`LoadModule wsgi_module /usr/lib/apache2/modules/mod_wsgi.so` and create
+a symlink to the file in `/etc/apache2/mods-enabled`. Don't forget to 
+restart apache :).
