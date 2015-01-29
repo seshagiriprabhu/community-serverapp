@@ -15,7 +15,7 @@ appear on the screen.
 ```bash
 $ sudo apt-get install binutils git postgresql-server-dev-9.3 
 postgresql-9.3-postgis-2.1 python-dev python-setuptools
-postgis gdal-bin
+postgis gdal-bin apache2 libapache2-mod-wsgi
 ```
 
 ## Python Django requirements
