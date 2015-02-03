@@ -8,7 +8,8 @@ directory as  `local_settings.py` and set values as required.
 6. Copy the `httpd.conf` from `conf-files` to `/etc/apache2` directory
 7. Copy the `000-default.conf` from conf-files to 
 `/etc/apache2/sites-available/`
-7. Restart `apache` and server will be running on port 80 ~ a map has to
+8. Collect static files (see below)
+9. Restart `apache` and server will be running on port 80 ~ a map has to
 appear on the screen.
 
 ## GNU/Linux requirements
@@ -43,6 +44,16 @@ $ sudo -i -u postgres psql createdb communityapp
 Enable GIS to the database
 ```bash
 $ sudo -i -u postgres psql -d communityapp -c "create extension postgis;"
+```
+
+### Create tables in DB
+```bash
+$ sudo python manage.py syncdb
+```
+
+## Collect static files 
+```bash
+$ sudo python manage.py collectstatic
 ```
 
 ## Possible Issues
