@@ -38,11 +38,11 @@ $ sudo -u postgres psql -c "ALTER USER postgres PASSWORD '$PASSWORD';"
 ```
 Create DB `communityapp`
 ```bash
-$ sudo -u postgres psql createdb communityapp
+$ sudo -i -u postgres psql createdb communityapp
 ```
 Enable GIS to the database
 ```bash
-$ sudo -u postgres psql -d communityapp -c "create extension postgis;"
+$ sudo -i -u postgres psql -d communityapp -c "create extension postgis;"
 ```
 
 ## Possible Issues
