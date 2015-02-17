@@ -65,7 +65,17 @@ ROOT_URLCONF = 'communityapp.urls'
 WSGI_APPLICATION = 'communityapp.wsgi.application'
 
 REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',)
+    'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',),
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.BrowsableAPIRenderer',
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.XMLRenderer',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.XMLParser',
+    ),
 }
 
 TEMPLATE_CONTEXT_PROCESSORS = (
