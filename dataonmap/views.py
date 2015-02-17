@@ -1,3 +1,5 @@
+from rest_framework.permissions import IsAdminUser
+from django.contrib.auth.decorators import login_required
 from rest_framework import generics
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -77,8 +79,9 @@ def error_key(request):
     return render_to_response('keyerror.html',\
             {'reason':'blob'},RequestContext(request))
 
-
+@login_required
 def home(request):
+    permissions = (IsAdminUser,)
     users=[]
     registeration = Registeration.objects.all()
     for user in registeration:
