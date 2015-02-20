@@ -28,7 +28,8 @@ class UserListSerializer(serializers.ModelSerializer):
 class FriendListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Registeration
-        fields = ('display_name', 'email')
+        fields = ('display_name', 'email', 'gender', 'date_of_birth', \
+                'phone_number')
 
 
 class FriendDetailsSerializer(serializers.ModelSerializer):
