@@ -1,7 +1,6 @@
 from django.db import models
 from datetime import datetime
 from django.utils import timezone
-import md5
 
 GENDER_CHOICES = (
         ('M', 'Male'), 
@@ -23,6 +22,7 @@ class Registeration(models.Model):
             max_length=32, blank=False, unique=True)
     date_time = models.DateTimeField(default=timezone.now,\
             editable=False, blank=True)
+    password = models.CharField(max_length = 100, blank=False)
     phone_number = models.CharField(max_length=11, blank=True)
     mobile_os = models.CharField(max_length=100, blank=False)
     mobile_device = models.CharField(max_length=100, blank=False)
