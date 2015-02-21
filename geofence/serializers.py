@@ -22,7 +22,7 @@ class GeofenceGIDSerializer(serializers.ModelSerializer):
 class GeofenceListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Geofence
-        fields = ('fence_name', 'latitude', 'longitude',\
+        fields = ('gid', 'fence_name', 'latitude', 'longitude',\
                 'geofence_radius', 'email')
 
 
