@@ -13,7 +13,7 @@ class RegisterationSerializer(serializers.ModelSerializer):
         model = Registeration
         fields = ('display_name', 'email', 'gender', 'date_of_birth',\
                 'phone_number', 'mobile_os', 'mobile_device', 'phone_uid',\
-                'carrier')
+                'carrier', 'password')
     
     def create(self, validated_data):
         return Registeration.objects.create(**validated_data)

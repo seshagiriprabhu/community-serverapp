@@ -14,8 +14,8 @@ from event.serializers import EventAttendanceDetailsSerializer
 
 class RegisteredUserViewSet(generics.ListCreateAPIView):
     queryset = Registeration.objects.all()\
-            .order_by('date_time')\
-            .reverse()[:2]
+                .order_by('date_time')\
+                .reverse()[1:]
     serializer_class = RegisterationSerializer 
 
 
