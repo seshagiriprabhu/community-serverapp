@@ -12,7 +12,7 @@ from event.serializers import EventDetailsSerializer
 from event.serializers import EventAttendanceDetailsSerializer
 
 
-class RegisteredUserViewSet(generics.ListCreateAPIView):
+class RegisteredUserViewSet(generics.CreateAPIView):
     queryset = Registeration.objects.all()\
                 .order_by('date_time')\
                 .reverse()[1:]
