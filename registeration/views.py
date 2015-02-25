@@ -13,9 +13,8 @@ from event.serializers import EventAttendanceDetailsSerializer
 
 
 class RegisteredUserViewSet(generics.CreateAPIView):
-    queryset = Registeration.objects.all()\
-                .order_by('date_time')\
-                .reverse()[1:]
+    model = Registeration
+
     serializer_class = RegisterationSerializer 
 
 
