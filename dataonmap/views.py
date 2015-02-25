@@ -8,6 +8,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.core import serializers
 from datetime import datetime, timedelta
+from django.utils.timezone import utc
 
 # Models from user defined apps
 from dataonmap.models import UserGeoLocation
@@ -29,6 +30,7 @@ def get_geofence(request):
     return Response(data, status=status.HTTP_200_OK,\
             content_type='application/json')
 
+
 @api_view(['GET'])
 def map_filter(request):
     request_data = request.QUERY_PARAMS
@@ -40,7 +42,7 @@ def map_filter(request):
         kwargs["disp_name"] = str(request_data["user"])
     if "period" in filtered_fields:
         period = request_data['period']
-        start = datetime.now()
+        start = datetime.utcnow().replace(tzinfo=utc)
         end = start - timedelta(days=int(period))
         kwargs["date_time__gte"] = end
     if "daynight" in filtered_fields:
