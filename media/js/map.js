@@ -15,6 +15,31 @@ customMarker = L.Marker.extend({
         title: 'User',
     }
 });
+
+var userEnteredIcon = L.icon({
+    iconUrl: '/static/images/green-user-2x.png',
+    iconRetinaUrl: '/static/images/green-user-2x.png',
+    shadowUrl: '/static/images/marker-shadow.png',
+    shadowRetinaUrl: '/static/images/marker-shadow.png',
+    iconSize:     [40, 63],
+    iconAnchor:   [20, 62],
+    shadowAnchor: [4, 62],
+    popupAnchor:  [-3, -76],
+    shadowSize: [40, 63]
+});
+
+var userExitedIcon = new L.icon({
+    iconUrl: '/static/images/red-user-2x.png',
+    iconRetinaUrl: '/static/images/red-user-2x.png',
+    shadowUrl: '/static/images/marker-shadow.png',
+    shadowRetinaUrl: '/static/images/marker-shadow.png',
+    iconSize:     [40, 63],
+    iconAnchor:   [20, 62],
+    shadowAnchor: [4, 62],
+    popupAnchor:  [-3, -76],
+    shadowSize: [40, 63]
+});
+
 /* Function to add geofences to 'array_geofences' */
 function AddGeofenceToLayer() {
     for (var i=0; i<array_geofences.length; i++) {
@@ -34,13 +59,19 @@ function addMarkerLayers(val) {
     var point = matches[1];
     var lon=point.split(' ')[0];
     var lat=point.split(' ')[1];
-    marker = new customMarker([lat, lon], {
-        title: fields.disp_name,
-        opacity: 1.0  
-    });
-
     if (fields.t_type == 1) {
         t_type = "Entered";
+        marker = new customMarker([lat, lon], {
+            title: fields.disp_name,
+            opacity: 1.0,
+            icon: userEnteredIcon
+        });
+    } else {
+        marker = new customMarker([lat, lon], {
+            title: fields.disp_name,
+            opacity: 1.0,
+            icon: userExitedIcon
+        });
     }
 
     var date_time = new Date(fields.date_time);
