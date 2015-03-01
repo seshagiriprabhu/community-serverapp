@@ -24,10 +24,10 @@ class Registeration(models.Model):
             editable=False, blank=True)
     password = models.CharField(max_length=128, blank=False)
     phone_number = models.CharField(max_length=11, blank=True)
-    mobile_os = models.CharField(max_length=100, blank=False)
-    mobile_device = models.CharField(max_length=100, blank=False)
-    phone_uid = models.CharField(max_length=100, blank=False)
-    carrier = models.CharField(max_length=100, blank=False)
+    mobile_os = models.CharField(max_length=100, blank=True)
+    mobile_device = models.CharField(max_length=100, blank=True)
+    phone_uid = models.CharField(max_length=100, blank=True)
+    carrier = models.CharField(max_length=100, blank=True)
 
     def save(self, *args, **kwargs):
         super(Registeration, self).save(*args, **kwargs)
