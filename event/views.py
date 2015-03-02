@@ -10,10 +10,8 @@ from event.serializers import EventAttendanceListSerializer
 from event.serializers import EventAttendanceDetailsSerializer
 
 
-class EventViewSet(generics.ListCreateAPIView):
-    queryset = Event.objects.all()\
-            .order_by('date_time')\
-            .reverse()[:5]
+class EventViewSet(generics.CreateAPIView):
+    model = Event
     serializer_class = EventSerializer
 
 
@@ -44,10 +42,8 @@ class EventDetailsViewSet(generics.RetrieveUpdateAPIView):
     serializer_class = EventDetailsSerializer
 
 
-class EventAttendanceViewSet(generics.ListCreateAPIView):
-    queryset = EventAttendance.objects.all()\
-            .order_by('date_time')\
-            .reverse()[:2]
+class EventAttendanceViewSet(generics.CreateAPIView):
+    queryset = EventAttendance
     serializer_class = EventAttendanceSerializer
 
 

@@ -8,10 +8,8 @@ from userlocation.serializers import UserLocationListSerializer
 from userlocation.serializers import UserLocationDetailsSerializer
 
 
-class UserLocationViewSet(generics.ListCreateAPIView):
-    queryset = UserLocationData.objects.all()\
-            .order_by('date_time')\
-            .reverse()[:5]
+class UserLocationViewSet(generics.CreateAPIView):
+    queryset = UserLocationData
     serializer_class = UserLocationSerializer    
 
 

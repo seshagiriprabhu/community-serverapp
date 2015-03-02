@@ -14,7 +14,6 @@ from event.serializers import EventAttendanceDetailsSerializer
 
 class RegisteredUserViewSet(generics.CreateAPIView):
     model = Registeration
-
     serializer_class = RegisterationSerializer 
 
 

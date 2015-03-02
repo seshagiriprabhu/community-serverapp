@@ -20,8 +20,9 @@ class EventSerializer(serializers.ModelSerializer):
 class EventListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
-        fields = ('event_id', 'event_name', 'start_time',\
-                'end_time')
+        fields = ('event_id', 'event_name', 'event_description',\
+                'event_creator', 'personal_feeling', 'start_time',\
+                'end_time', 'geofence_id')
 
 
 class EventDetailsSerializer(serializers.ModelSerializer):
@@ -44,10 +45,10 @@ class EventAttendanceSerializer(serializers.ModelSerializer):
 class EventAttendanceListSerializer(serializers.ModelSerializer): 
     class Meta:
         model = EventAttendance
-        fields = ('aid', 'email', 'status')
+        fields = ('aid', 'email', 'display_name', 'status')
 
 
 class EventAttendanceDetailsSerializer(serializers.ModelSerializer):
     class Meta:
         model = EventAttendance
-        fields = ('aid', 'email', 'display_name', 'status', 'date_time')
+        fields = ('aid', 'email', 'display_name', 'status')

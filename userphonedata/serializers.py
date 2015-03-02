@@ -19,7 +19,11 @@ class UserPhoneDataSerializer(serializers.ModelSerializer):
 class UserPhoneDataListSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserPhoneData
-        fields = ('uid', 'date_time', 'email')
+        fields = ('email', 'date_time', 'battery_state',\
+                'app_power_consumption', 'avg_mem_util',\
+                'avg_cpu_util', 'last_online_time',\
+                'last_online_duration', 'connection_method',\
+                'app_data_transfered')
 
 
 class UserPhoneDataDetailsSerializer(serializers.ModelSerializer):

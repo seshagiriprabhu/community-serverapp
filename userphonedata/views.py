@@ -7,8 +7,8 @@ from userphonedata.serializers import UserPhoneDataListSerializer
 from userphonedata.serializers import UserPhoneDataDetailsSerializer
 
 
-class UserPhoneDataViewSet(generics.ListCreateAPIView):
-    queryset = UserPhoneData.objects.all().reverse()[:1]
+class UserPhoneDataViewSet(generics.CreateAPIView):
+    queryset = UserPhoneData
     serializer_class = UserPhoneDataSerializer
 
 

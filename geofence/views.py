@@ -6,10 +6,8 @@ from geofence.serializers import GeofenceDetailsSerializer
 from geofence.serializers import GeofenceGIDSerializer
 
 
-class GeofenceViewSet(generics.ListCreateAPIView):
-    queryset = Geofence.objects.all()\
-            .order_by('date_time')\
-            .reverse()[:5]
+class GeofenceViewSet(generics.CreateAPIView):
+    queryset = Geofence
     serializer_class = GeofenceSerializer
 
 
