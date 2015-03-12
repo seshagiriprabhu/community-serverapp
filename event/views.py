@@ -48,12 +48,12 @@ class EventAttendanceViewSet(generics.CreateAPIView):
 
 
 class EventAttendanceListViewSet(generics.ListAPIView):
-    queryset = EventAttendance.objects.all()\
-            .order_by('date_time')\
-            .reverse()
     serializer_class = EventAttendanceListSerializer
-    lookup_field = ('event_id')
-
+    def get_queryset(self):
+        return EventAttendance.objects.all().\
+                filter(event_id=self.kwargs['pk'])\
+                .order_by('date_time')\
+                .reverse()
 
 class EventAttendanceDetailsViewSet(generics.RetrieveUpdateAPIView):
     queryset = EventAttendance.objects.all()

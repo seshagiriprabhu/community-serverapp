@@ -21,7 +21,7 @@ urlpatterns =  [
         url(r'^attendance/$',
             views.EventAttendanceViewSet.as_view(),
             name='event-attendance'),
-        url(r'^(?P<event_id>[0-9]+)/attendance/$',
+        url(r'^(?P<pk>[0-9]+)/attendance/$',
             views.EventAttendanceListViewSet.as_view(),
             name='event-attendance-list'),
         url(r'^attendance/(?P<pk>[0-9]+)/$',
