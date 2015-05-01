@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 from django.utils.timezone import utc
 
 # Models from user defined apps
-from dataonmap.models import UserGeoLocation
+from dataonmap.models import UserGeoLocation, GeofenceMap
 from geofence.models import Geofence
 from registeration.models import Registeration
 
@@ -28,6 +28,17 @@ def get_geofence(request):
     result = Geofence.objects.all()
     data = serializers.serialize('json', result)
     return Response(data, status=status.HTTP_200_OK,\
+            content_type='application/json')
+
+
+@api_view(['GET'])
+def get_geofence_details(request):
+    result = Geofence.objects.all()\
+                .filter(gid=self.kwargs['pk'])\
+                .order_by('date_time')\
+                .reverse()
+    data = serializers.serialize('json', result)
+    return Response(datat, status=status.HTTP_200_OK,
             content_type='application/json')
 
 
@@ -80,6 +91,7 @@ def map_filter(request):
 def error_key(request):
     return render_to_response('keyerror.html',\
             {'reason':'blob'},RequestContext(request))
+
 
 @login_required
 def home(request):

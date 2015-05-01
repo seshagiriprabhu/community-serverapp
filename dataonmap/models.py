@@ -12,4 +12,14 @@ class UserGeoLocation(models.Model):
     def __unicode__(self):
         return self.disp_name
 
+
+class GeofenceMap(models.Model):
+    gid = models.IntegerField()
+    fence_name = models.CharField(max_length=128)
+    geom = models.PointField()
+
+    def __unicode__(self):
+        return self.disp_name
+
+
 admin.site.register(UserGeoLocation, admin.OSMGeoAdmin)

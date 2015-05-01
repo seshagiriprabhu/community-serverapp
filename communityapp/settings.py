@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.gis',
     'rest_framework',
     'leaflet',
+    'djgeojson',
     # Custom Created Apps
     'dataonmap',
     'registeration',
