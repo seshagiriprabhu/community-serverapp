@@ -9,7 +9,7 @@ import os
 headers = {'Content-type': 'application/json',\
         'Accept': 'application/json'}
 
-BASE_URL = 'http://localhost/'
+BASE_URL = 'http://localhost:8000/'
 register_url = BASE_URL + 'register/'
 geofence_url = BASE_URL + 'geofence/'
 userlocation_url = BASE_URL + 'location/'
